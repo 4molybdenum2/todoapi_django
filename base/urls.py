@@ -1,4 +1,5 @@
 from django.urls import path,include
+import notifications.urls
 from . import views
 urlpatterns = [
     path('', views.apiOverview, name="api-overview"),
@@ -7,4 +8,5 @@ urlpatterns = [
     path('task-create/', views.taskCreate, name="task-Create"),
     path('task-update/<str:pk>/', views.taskUpdate, name="task-update"),
     path('task-delete/<str:pk>/', views.taskDelete, name="task-delete"),
+    path('inbox/notifications/', include(notifications.urls, namespace='notifications')),
 ]
